@@ -1,0 +1,11 @@
+﻿
+
+.CancelReservation-container {
+    border: 4px solid #ccc;
+    height: 200px;
+    width: 700px;
+    margin: auto;
+    background-color: antiquewhite;
+    margin-top: 80px;
+    font-size: 26px;
+}

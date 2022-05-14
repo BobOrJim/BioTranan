@@ -1,0 +1,237 @@
+
+
+
+
+//Work
+GET https://localhost:7210/api/v01/Admin/MovieShows HTTP/1.1
+###
+
+//Work
+GET https://localhost:7210/api/v01/Admin/Reservations HTTP/1.1
+###
+
+//Work
+GET https://localhost:7210/api/v01/Admin/ReservationsForMovieShow/C0000000-0000-0000-0000-000000000002 HTTP/1.1
+###
+
+//Work
+DELETE https://localhost:7210/api/v01/Admin/Movie/B0000000-0000-0000-0000-000000000002 HTTP/1.1
+###
+
+
+
+//Funkar inte, men funkar i swagger. Skall inte byggas i MVC, lämnar tillsvidare.
+//Kanske ligger felet i denna signaturen 
+//public async Task<IActionResult> ChangeMovieShowPandemicAsync(Guid id, [FromBody] int PandemicSeatReduction)
+PATCH https://localhost:7210/api/v01/Admin/MovieShowPandemic/C0000000-0000-0000-0000-000000000003 HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "PandemicSeatReduction": 3
+}
+###
+
+//Funkar
+POST https://localhost:7210/api/v01/Admin/Salon HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "name": "BAAM",
+  "totalSeats": 200,
+  "movieShows": null
+}
+###
+
+//Funkar
+POST https://localhost:7210/api/v01/Admin/Movie HTTP/1.1
+accept: */*
+content-type: application/json
+ApiKey: password1234
+
+{
+  "title": "BooM",
+  "language": "string",
+  "subtitle": "string",
+  "cathegory": "string",
+  "minutesLength": 600,
+  "minimumAgeLimit": 200,
+  "pictureURL": "string",
+  "description": "string",
+  "director": "string",
+  "actors": "string",
+  "releaseDate": "2022-04-10T08:56:07.006Z",
+  "priceSEK": 10000,
+  "purchasedViews": 1000,
+  "usedViews": 0,
+  "movieShows": null
+}
+###
+
+//Funkar
+POST https://localhost:7210/api/v01/Admin/Reservation HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "movieShowId": "C0000000-0000-0000-0000-000000000002",
+  "reservationCode": 999999,
+  "reservationCodeUsed": false,
+  "email": "BANANMANNEN@example.com",
+  "numberOfTickets": 1
+}
+###
+
+
+//Funkar
+POST https://localhost:7210/api/v01/Admin/MovieShow HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "salonId": "A0000000-0000-0000-0000-000000000001",
+  "movieId": "B0000000-0000-0000-0000-000000000003",
+  "dateTime": "2039-06-12T11:06:57.100Z",
+  "reservedSeats": 600,
+  "pandemicSeatReduction": 0,
+  "reservations": null,
+  "reviews": null
+}
+###
+
+GET https://localhost:7210/api/v01/Admin/Secret HTTP/1.1
+ApiKey: password1234
+###
+GET https://localhost:7210/api/v01/Admin/Secret HTTP/1.1
+ApiKey: wrongPassword
+##
+// _________________________MVC_________________________
+
+
+//Funkar
+GET https://localhost:7210/api/v01/UIHead/MovieShowSummarys HTTP/1.1
+###
+
+//Funkar
+GET https://localhost:7210/api/v01/UIHead/MovieShowDetail/C0000000-0000-0000-0000-000000000002 HTTP/1.1
+###
+
+//Funkar
+POST https://localhost:7210/api/v01/UIHead/MakeReservation HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "id": "C0000000-0000-0000-0000-000000000001",
+  "email": "BokaInatt",
+  "numberOfTickets": 1
+}
+###
+
+//Funkar
+POST https://localhost:7210/api/v01/UIHead/CancelReservation/533747 HTTP/1.1
+###
+
+//Funkar. Till fil som har visats. Svarar Created
+POST https://localhost:7210/api/v01/UIHead/MakeReview HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "reservationCode": 100001,
+  "rating": 4,
+  "comment": "Hi from Rest Client"
+}
+
+###
+//Funkar. Till film som inte har visats. Svarar "MovieNotFinished"
+POST https://localhost:7210/api/v01/UIHead/MakeReview HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "reservationCode": 100007,
+  "rating": 4,
+  "comment": "Hi from Rest Client"
+}
+###
+
+// Funkar Till film som har visats, men bränt sin review kod (reservationCode) Svarar "ReservationCodeIsUsed" på andra klicket.
+POST https://localhost:7210/api/v01/UIHead/MakeReview HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "reservationCode": 100002,
+  "rating": 4,
+  "comment": "Hi from Rest Client"
+}
+###
+
+// Svarar "ReservationCodeNotFound"
+POST https://localhost:7210/api/v01/UIHead/MakeReview HTTP/1.1
+accept: */*
+content-type: application/json
+
+{
+  "reservationCode": 555666,
+  "rating": 4,
+  "comment": "Hi from Rest Client"
+}
+###
+
+
+
+
+
+
+
+
+
+
+
+
+//Skräp nedan
+###
+
+GET https://example.com/comments/1 HTTP/1.1
+###
+
+GET https://dn.se
+###
+
+GET https://v2.jokeapi.dev/joke/Any
+###
+
+//Nedan funkar bra
+GET https://v2.jokeapi.dev/joke/Any
+authority: v2.jokeapi.dev
+pragma: no-cache
+cache-control: no-cache
+sec-ch-ua: ^\^" Not A;Brand^\^";v=^\^"99^\^", ^\^"Chromium^\^";v=^\^"99^\^", ^\^"Google Chrome^\^";v=^\^"99^\^"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: ^\^"Windows^\^"
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+sec-fetch-user: ?1
+sec-fetch-dest: document
+accept-language: sv-SE,sv;q=0.9,en-US;q=0.8,en;q=0.7
+###
+
+
+
+
+
+
+
+
+
+
+
+
+
+

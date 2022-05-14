@@ -1,0 +1,73 @@
+﻿@using Presentation_MVC.ViewModel
+@model MovieShowDetailsViewModel
+<title>MovieDetails.cshtml</title>
+
+
+
+<div class = "MovieDetails-container">
+  
+  <div class ="MovieDetails-container-top"> <!-- Top section -->
+    
+    <div class ="MovieDetails-section"> <!-- Left block -->
+      <img class = "schedule-image" src="@Model.PictureURL">
+    </div>
+    
+    <div class ="MovieDetails-section"> <!-- Center block -->
+      <div style="color:black;text-align:center;font-size: 26px;"><p class ="">@Model.Title</p></div>
+      <div class="MovieDetails-inline-block">
+        <p class="MovieDetails-inline-block">@Model.Language</p>
+        <p class="MovieDetails-inline-block">@Model.Subtitle</p>
+        <p class="MovieDetails-inline-block">@Model.Cathegory</p>
+        <p class="MovieDetails-inline-block">@Model.MinutesLength min</p>
+        <p class="MovieDetails-inline-block">@Model.MinimumAgeLimit år</p>
+      </div>
+      <div style="color:black;text-align:center;font-size: 26px;"><p class ="">@Model.Salon</p></div>
+      <div class="MovieDetails-inline-block"><p class ="">@Model.Date</p></div>
+      <div class="MovieDetails-inline-block"><p class ="">@Model.Time</p></div>
+    </div>
+
+    <div class ="MovieDetails-section">     <!-- Right block -->
+      <div class="MovieDetails-inline-block">
+        <p class="MovieDetails-inline-block">@Model.Reservations</p>
+        <p class="MovieDetails-inline-block">kvar av @Model.TotalSeats</p>
+      </div>
+      <div class ="">
+        <form asp-controller="Home" asp-action="ReservationConfirmation" method="post">
+          <label for="email">E-post</label>
+          <input asp-for="Email" placeholder="min@epost.se" id='email'/>
+          <span asp-validation-for="Email"></span>
+          
+          <br />
+          <label for="tickets">Antal:</label>
+          <input asp-for="NumberOfTickets" placeholder=0 id='tickets'/>
+          <input asp-for="Id" type="hidden" value=@Model.Id/>
+          <span asp-validation-for="NumberOfTickets"></span>
+          <br />
+          <br />
+          <button style="align-content:end;" type="submit">Reservera</button>
+        </form>
+      </div>
+      <div class ="">
+        <p class ="MovieDetails-inline-block">@Model.PriceSEK kr/st</p> 
+        <p id = "totalPrice" class ="MovieDetails-inline-block"></p>
+      </div>
+    </div>
+  </div>
+    
+  <div class ="MovieDetails-container-bottom"> <!-- Bottom section -->
+    <div style="padding-left: 20px"><p class = "">@Model.Description</p></div>
+    <div style="padding-left: 20px"><p class = ""><b>Regi:</b> @Model.Director</p></div>
+    <div style="padding-left: 20px"><p class = ""><b>Skådespelare:</b> @Model.Actors</p></div>
+    <div style="padding-left: 20px"><p class = ""><b>Premiär:</b> @Model.ReleaseYear</p></div>
+  </div>
+
+</div>
+
+<script>
+    var tickets = document.getElementById("tickets");
+    document.getElementById("tickets").addEventListener("change", function(){
+        totalPrice.innerHTML = "Totalt:" + (tickets.value * @Model.PriceSEK) + " kr";
+    });
+</script>
+
+

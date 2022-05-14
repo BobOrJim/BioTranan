@@ -1,0 +1,33 @@
+﻿
+@using Presentation_MVC.ViewModel;
+@model MovieShowSummaryViewModel
+
+<title>Schedule.cshtml</title>
+
+
+@foreach (MovieShowSummaryModel MovieShowSummaries in Model.movieShowSummaryModels)
+{
+  <div class ="schedule-container">
+    <div class = "schedule-section-div" > <img class = "schedule-image" src="@MovieShowSummaries.PictureURL"> </div>
+    <div class = "schedule-section-div" >
+      <div class = "schedule-date-time-div" > <p>@MovieShowSummaries.Date</p> </div>
+      <div class = "schedule-date-time-div" > <p>@MovieShowSummaries.Time</p> </div>
+    </div>
+    <div class = "schedule-section-div" >
+      <div class = "schedule-title-div" > <p>@MovieShowSummaries.Title</p> </div>
+      <div class = "" > 
+        <p class = "schedule-paragraph">@MovieShowSummaries.Language, </p>
+        <p class = "schedule-paragraph">@MovieShowSummaries.Subtitle.</p>
+        <p class = "schedule-paragraph">@MovieShowSummaries.Cathegory |</p>
+        <p class = "schedule-paragraph">@MovieShowSummaries.MinutesLength min |</p>
+        <p class = "schedule-paragraph">@MovieShowSummaries.MinimumAgeLimit år</p>
+      </div>
+    </div>
+    <div class = "schedule-section-div" > 
+      <p class = "schedule-paragraph">@MovieShowSummaries.ReservedSeats</p>
+      <p class = "schedule-paragraph"> / @MovieShowSummaries.TotalSeats</p>        
+      <p> <a class="" asp-controller="Home" asp-action="MovieDetails" asp-route-Id="@MovieShowSummaries.Id">Köp biljett</a> </p> @* skickas som query params *@
+    </div>
+  </div>
+}
+

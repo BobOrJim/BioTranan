@@ -1,0 +1,22 @@
+﻿
+
+.header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+    height: 55px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.header-item {
+    background-color: black;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 22px;
+    font-size: 22px;
+}

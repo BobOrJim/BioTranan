@@ -1,0 +1,35 @@
+﻿
+@using Presentation_MVC.ViewModel;
+@model WriteReviewViewModel
+
+<title>WriteReview.cshtml</title>
+
+<div class ="WriteReview-container">
+
+  @Model.reviewStatusReply
+
+  <p>Ge betyg:</p>
+
+  <form asp-controller="Home" asp-action="WriteReview" method="post">
+
+    <label for="reservation">Reservations nummer:</label>
+    <input asp-for="ReservationCode" placeholder=0 id='reservation'/>
+    <span asp-validation-for="ReservationCode"></span>        
+    <br />
+    <label for="rating">Betyg:</label>
+    <input asp-for="Rating" placeholder=0 id='rating'/>
+    <span asp-validation-for="Rating"></span>
+    <br />
+        
+    <label for="review">Recension:</label>
+    <input class="WriteReview-reviewBox" asp-for="Comment" placeholder="" id='review'/>
+    <span asp-validation-for="Comment"></span>
+    <br />
+    
+    <button type="submit">Skicka</button>
+          
+  </form>
+
+</div>
+
+

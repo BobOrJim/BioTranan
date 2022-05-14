@@ -1,0 +1,51 @@
+.schedule-container {
+    border: 4px solid #ccc;
+    height: 200px;
+    width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 3fr 1fr;
+    grid-template-rows: 100%;
+    background-color: antiquewhite;
+}
+
+.schedule-section-div {
+    border: 2px solid #700;
+    padding: 5px;
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.schedule-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.schedule-date-time-div {
+    /*border: 4px solid rgb(12, 0, 119); */
+    font-size: 26px;
+}
+
+.schedule-title-div{
+    /* border: 4px solid rgb(58, 119, 0); */
+    font-size: 26px;
+}
+
+.schedule-paragraph {
+    /*border: 2px solid rgb(119, 28, 0);*/
+    display: inline-block;
+    font-size: 16px;
+}
+
+.schedule-title-decription-div {
+    border: 20px solid #700;
+    display: inline-block;
+}
+
+.schedule-tickets-div {
+    border: 20px solid #700;
+    display: inline-block;
+}
