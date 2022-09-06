@@ -12,9 +12,9 @@ Fördelar är att man följer REST bättre, samt att man inte riskerar att få b
 Nackdelar är att det blir många endpoints och/eller services som inte kommer användas, samt att dependency injection container blir bloatad vid många entiteter.
 
 
-Tror sista alternativet är att föredra, men ser fram emot att bolla detta med framtida kollega över en kaffe.
+Tror sista alternativet är att föredra och kommer välja denna lösning på nästa projekt. Ser mycket fram emot att bolla detta med framtida kollega över en kaffe :)
 
-Projektet är förberett för att hänga på en UI-Head i React när den kursen börjar, skall bli kul. Nuvarande UI-head är ett enklare C#/MVC.
+Projektet är förberett för att hänga på en UI-Head i React när den kursen börjar. Nuvarande UI-head är ett enklare C#/MVC.
 
 
 ![Screenshot](01_Arkitektur.png)
